@@ -1,9 +1,6 @@
 package com.example.springprogrammaticbeansregistration;
 
-import com.example.springprogrammaticbeansregistration.beanClasses.BeanOne;
-import com.example.springprogrammaticbeansregistration.beanClasses.BeanThree;
-import com.example.springprogrammaticbeansregistration.beanClasses.BeanTwo;
-import com.example.springprogrammaticbeansregistration.beanClasses.BeanZero;
+import com.example.springprogrammaticbeansregistration.beanClasses.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +26,12 @@ public class SpringProgrammaticBeansRegistrationApplication {
                    ctx.getBeansOfType(BeanTwo.class).forEach((name, bean) -> System.out.println(name));
                    System.out.println("BeanThree: ");
                    ctx.getBeansOfType(BeanThree.class).forEach((name, bean) -> System.out.println(name));
+                   System.out.println("BeanSix tests: ");
+                   System.out.println(ctx.getBean(BeanSix.class).random());
+                   System.out.println(ctx.getBean(BeanSix.class).random());
+                   System.out.println(ctx.getBean(BeanSix.class).random());
+                   System.out.println("BeanSeven: ");
+                   ctx.getBeansOfType(BeanSeven.class).forEach((name, bean) -> System.out.println(name + " with BeanSix of " + bean.getBeanSix().random()));
                    System.out.println("--------------------------------------");
                };
            }
