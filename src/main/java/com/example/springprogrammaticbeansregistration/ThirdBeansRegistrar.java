@@ -12,14 +12,22 @@ public class ThirdBeansRegistrar implements BeanRegistrar {
 	public void register(BeanRegistry registry, Environment environment) {
 
 		registry.registerBean("four", BeanFour.class
-		, customizer -> customizer.supplier(context -> new BeanFour(context.bean("firstFoo", Foo.class))));// would be nice to have bean name completion here
+		, customizer -> customizer.supplier(
+						// would be nice to have the bean name completion here - we select the specific bean of the interface type
+				context -> new BeanFour(context.bean("firstFoo", Foo.class))));
 		registry.registerBean("eight1", BeanEight.class);
 		registry.registerBean("eight2", BeanEight.class);
+		  // primary bean:
+		registry.registerBean("eight3", BeanEight.class,
+				customizer -> customizer.primary()
+		);
 		registry.registerBean("five", BeanFive.class,
 				customizer -> {
-					customizer.supplier(context -> new BeanFive(
+					customizer.supplier(
+							context -> new BeanFive(
 							context.bean(BeanFour.class),
-							context.bean("eight1", BeanEight.class))); // would be nice to have bean name completion here
+									// would be nice to have the bean name completion here
+							context.bean("eight1", BeanEight.class)));
 				});
 
 	}
