@@ -13,8 +13,8 @@ public class DynamicBeansRegistrationTests {
 
     // dynamic name/type test: dynamic type
     // uncomment here and in the DynamicBeansRegistrar class to test
-    @Autowired private FirstBar bar;
-    @Autowired private Bar boo;
+    //@Autowired private FirstBar bar;
+    //@Autowired private Bar boo;
     @Autowired SomeBean1 someBean1;
     @Autowired SomeBean2 someBean2;
     @Autowired SomeBean3 someBean3;

@@ -16,7 +16,6 @@ public class DependentBeansRegistrationTests {
     @Autowired private BeanFive beanFive;
 
     // one of the beans is defined as primary, should be no errors
-    // NPE on navigation attempt
     @Autowired private BeanEight beanEight;
     // qualified autowiring is ok:
     @Autowired private BeanEight eight2;
