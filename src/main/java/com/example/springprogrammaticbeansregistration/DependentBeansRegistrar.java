@@ -18,7 +18,7 @@ public class DependentBeansRegistrar implements BeanRegistrar {
 
 		registry.registerBean("four", BeanFour.class
 		, customizer -> customizer.supplier(
-						// would be nice to have the bean name completion here - we select the specific bean of the interface type
+						// would be nice to have the bean name completion here - we select specific existing bean `firstFoo` of the interface type
 				context -> new BeanFour(context.bean("firstFoo", Foo.class))));
 		registry.registerBean("eight1", BeanEight.class);
 		registry.registerBean("eight2", BeanEight.class);
