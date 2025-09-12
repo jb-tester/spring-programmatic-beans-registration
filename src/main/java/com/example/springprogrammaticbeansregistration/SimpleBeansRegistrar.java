@@ -14,6 +14,7 @@ public class SimpleBeansRegistrar implements BeanRegistrar {
 	@Override
 	public void register(BeanRegistry registry, Environment environment) {
 		// bean w/o dependencies; default scope; implicit name
+		// this bean injection via AutowireBean... works incorrectly (https://youtrack.jetbrains.com/issue/IDEA-379044)
 		registry.registerBean(BeanZero.class);
 		// bean with explicit name; default scope; has String-type constructor
 		registry.registerBean("one", BeanOne.class, spec -> spec.supplier(context -> new BeanOne("bean one")));

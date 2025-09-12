@@ -25,7 +25,9 @@ public class DynamicNameOrTypeBeansRegistrar implements BeanRegistrar {
        registry.registerBean(Objects.requireNonNull(env.getProperty("utils.bean.name2")), SomeBean3.class);
        // bean is displayed as `null#0` in the beans view
         // also (!!!) is treated as a bean of any type, making all injections display 'multiple candidates' error
-       //registry.registerBean( Utils.getBeanType(env));
+       registry.registerBean( Utils.getBeanTypeFirst(env));
+        // bean is treated as a 'boo' bean of any type, again making all injections display 'multiple candidates' error
+        registry.registerBean( "boo",Utils.getBeanTypeSecond(env));
     }
 
 
@@ -42,12 +44,20 @@ class Utils {
     public static String getBeanName(Environment env) {
         return env.getProperty("utils.bean.name1");
     }
-    public static Class<? extends Bar> getBeanType(Environment env) {
-        if (Objects.requireNonNull(env.getProperty("utils.bean.type")).equals("first")) {
+    public static Class<? extends Bar> getBeanTypeFirst(Environment env) {
+        if (Objects.requireNonNull(env.getProperty("utils.bean.type1")).equals("first")) {
             return FirstBar.class;
         }
         else {
             return SecondBar.class;
+        }
+    }
+    public static Class<? extends Bar> getBeanTypeSecond(Environment env) {
+        if (Objects.requireNonNull(env.getProperty("utils.bean.type2")).equals("second")) {
+            return SecondBar.class;
+        }
+        else {
+            return FirstBar.class;
         }
     }
 }
