@@ -1,4 +1,7 @@
 package com.example.springprogrammaticbeansregistration.beanClasses;
 
-public record BeanOne(String id) {
+
+public interface Bar {
+
+    String getId();
 }

@@ -8,8 +8,8 @@ import org.springframework.core.env.Environment;
 
 import java.util.Random;
 
-
-public class SecondBeansRegistrar implements BeanRegistrar {
+// prototype beans registration. seems to be working fine
+public class PrototypeBeansRegistrar implements BeanRegistrar {
     @Override
     public void register(BeanRegistry registry, Environment env) {
         registry.registerBean("bean6", BeanSix.class, spec -> spec

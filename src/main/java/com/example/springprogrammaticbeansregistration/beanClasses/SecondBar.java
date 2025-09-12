@@ -1,12 +1,11 @@
 package com.example.springprogrammaticbeansregistration.beanClasses;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class ThirdFoo implements Foo {
+
+public class SecondBar implements Bar {
 
     @Override
     public String getId() {
-        return "Foo_3";
+        return "Bar_2";
     }
 }

@@ -6,7 +6,12 @@ import org.springframework.beans.factory.BeanRegistrar;
 import org.springframework.beans.factory.BeanRegistry;
 import org.springframework.core.env.Environment;
 
-public class ThirdBeansRegistrar implements BeanRegistrar {
+// dependent beans registration:
+// observe the beans diagram: the dependent beans are shown incorrectly
+// also, the beans dependencies are not shown in Structure
+// feature proposals: provide completion for bean names
+// provide inspection for not satisified dependencies?
+public class DependentBeansRegistrar implements BeanRegistrar {
 // observe the beans diagram: the dependent beans are shown incorrectly
 	@Override
 	public void register(BeanRegistry registry, Environment environment) {

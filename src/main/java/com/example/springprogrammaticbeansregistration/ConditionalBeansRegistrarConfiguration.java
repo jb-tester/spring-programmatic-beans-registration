@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Import;
 
 
 @Configuration
-@Import(ThirdBeansRegistrar.class)
-class ThirdBeansRegistrarConfiguration {
+@Import(ConditionalBeansRegistrar.class)
+public class ConditionalBeansRegistrarConfiguration {
 
 }

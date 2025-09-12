@@ -1,4 +1,5 @@
 package com.example.springprogrammaticbeansregistration.beanClasses;
 
-public record BeanOne(String id) {
+
+public class BeanTen {
 }

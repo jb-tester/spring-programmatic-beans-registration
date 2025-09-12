@@ -9,7 +9,7 @@ import org.springframework.beans.factory.BeanRegistrar;
 import org.springframework.beans.factory.BeanRegistry;
 import org.springframework.core.env.Environment;
 
-public class FirstBeansRegistrar implements BeanRegistrar {
+public class SimpleBeansRegistrar implements BeanRegistrar {
 
 	@Override
 	public void register(BeanRegistry registry, Environment environment) {
@@ -23,11 +23,6 @@ public class FirstBeansRegistrar implements BeanRegistrar {
 					customizer.description("bean two depending on bean one description");
 					customizer.supplier(context -> new BeanTwo(context.bean(BeanOne.class)));
 				});
-		// conditional registration; profiles
-		if (environment.matchesProfiles("profile1", "profile2")) {
-			registry.registerBean("three", BeanThree.class, spec -> spec.supplier(context -> new BeanThree("bean three from profile1 or profile2")));
-		} else {
-			registry.registerBean("alt_three", BeanThree.class, spec -> spec.supplier(context -> new BeanThree("bean three default")));
-		}
+
 	}
 }

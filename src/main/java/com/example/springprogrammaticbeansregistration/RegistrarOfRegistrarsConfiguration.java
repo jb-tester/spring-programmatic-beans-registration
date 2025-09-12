@@ -3,9 +3,8 @@ package com.example.springprogrammaticbeansregistration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-
 @Configuration
-@Import(SecondBeansRegistrar.class)
-class SecondBeansRegistrarConfiguration {
+@Import(RegistrarOfRegistrars.class)
+public class RegistrarOfRegistrarsConfiguration {
 
 }
