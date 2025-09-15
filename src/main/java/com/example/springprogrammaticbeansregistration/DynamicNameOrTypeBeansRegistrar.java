@@ -28,6 +28,7 @@ public class DynamicNameOrTypeBeansRegistrar implements BeanRegistrar {
         // IDEA uses the default bean name instead of the one get from method call
         // update: now it uses the name `T#0`
        registry.registerBean(Objects.requireNonNull(env.getProperty("utils.bean.name2")), SomeBean3.class);
+       // the name is considered to be `java.lang.String#0`
        registry.registerBean(env.getProperty("utils.bean.name3"), SomeBean4.class);
        // bean is displayed as `null#0` in the beans view
         // also (!!!) is treated as a bean of any type, making all injections display 'multiple candidates' error
