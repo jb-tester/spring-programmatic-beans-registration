@@ -3,6 +3,7 @@ package com.example.springprogrammaticbeansregistration;
 import com.example.springprogrammaticbeansregistration.beanClasses.Bar;
 import com.example.springprogrammaticbeansregistration.beanClasses.FirstBar;
 import com.example.springprogrammaticbeansregistration.beanClasses.SecondBar;
+import com.example.springprogrammaticbeansregistration.beanClasses.ThirdBar;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ public class DynamicBeansRegistrationTests {
     // uncomment here and in the DynamicBeansRegistrar class to test
     @Autowired private FirstBar bar; // bean with no explicit name and type from method call
     @Autowired private Bar boo;  // bean with name 'boo' and type from method call
+    @Autowired private ThirdBar bar3;
     // ====
     // dynamic name/type test: dynamic name
     @Autowired SomeBean1 someBean1;  // name from some util method call
@@ -37,6 +39,7 @@ public class DynamicBeansRegistrationTests {
     public void notNullTest() {
         assertNotNull(bar);
         assertNotNull(boo);
+        assertNotNull(bar3);
         assertNotNull(bean0);
         assertNotNull(someBean1);
         assertNotNull(someBean2);
@@ -47,6 +50,7 @@ public class DynamicBeansRegistrationTests {
     void testBeanNames() {
         assertEquals("com.example.springprogrammaticbeansregistration.beanClasses.FirstBar#0", context.getBeanNamesForType(FirstBar.class)[0]);
         assertEquals("boo", context.getBeanNamesForType(SecondBar.class)[0]);
+        assertEquals("com.example.springprogrammaticbeansregistration.beanClasses.ThirdBar#0", context.getBeanNamesForType(ThirdBar.class)[0]);
         assertEquals("someBean0", context.getBeanNamesForType(SomeBean0.class)[0]);
         assertEquals("beanNameFromProperties1", context.getBeanNamesForType(SomeBean1.class)[0]);
         assertEquals("beanNameFromConstant", context.getBeanNamesForType(SomeBean2.class)[0]);

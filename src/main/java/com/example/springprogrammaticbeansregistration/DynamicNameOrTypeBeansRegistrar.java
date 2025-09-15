@@ -4,6 +4,7 @@ package com.example.springprogrammaticbeansregistration;
 import com.example.springprogrammaticbeansregistration.beanClasses.Bar;
 import com.example.springprogrammaticbeansregistration.beanClasses.FirstBar;
 import com.example.springprogrammaticbeansregistration.beanClasses.SecondBar;
+import com.example.springprogrammaticbeansregistration.beanClasses.ThirdBar;
 import org.springframework.beans.factory.BeanRegistrar;
 import org.springframework.beans.factory.BeanRegistry;
 import org.springframework.core.env.Environment;
@@ -34,6 +35,8 @@ public class DynamicNameOrTypeBeansRegistrar implements BeanRegistrar {
        registry.registerBean( Utils.getBeanTypeFirst(env));
         // bean is treated as a 'boo' bean of any type, again making all injections display 'multiple candidates' error
         registry.registerBean( "boo",Utils.getBeanTypeSecond(env));
+        // bean name is considered to be `java.lang.Class<ThirdBar>#0`
+        registry.registerBean( Utils.getBeanTypeThird());
     }
 
 
@@ -69,4 +72,9 @@ class Utils {
             return FirstBar.class;
         }
     }
+
+    public static Class<ThirdBar> getBeanTypeThird() {
+        return ThirdBar.class;
+    }
+
 }
