@@ -23,12 +23,12 @@ public class SameTypeBeansRegistrationTests {
     @Autowired
     private Buzz buzz1_qualified;
 
+    // doesn't navigate to the proper bean definition - navigates to the first implicit-name bean instead
     @Qualifier("com.example.springprogrammaticbeansregistration.beanClasses.Buzz#1")
     @Autowired
     private Buzz buzz2_qualified;
 
-    // doesn't navigate to the proper bean definition - navigates to the first implicit-name bean instead
-    @Qualifier("thirdBuzz")
+     @Qualifier("thirdBuzz")
     @Autowired
     private Buzz buzz3_qualified;
 
