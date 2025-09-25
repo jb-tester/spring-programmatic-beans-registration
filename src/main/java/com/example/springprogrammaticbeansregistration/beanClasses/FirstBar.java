@@ -1,7 +1,6 @@
 package com.example.springprogrammaticbeansregistration.beanClasses;
 
 
-
 public class FirstBar implements Bar {
 
     @Override

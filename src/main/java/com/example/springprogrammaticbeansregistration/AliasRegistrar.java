@@ -10,11 +10,13 @@ import org.springframework.core.env.Environment;
 public class AliasRegistrar implements BeanRegistrar {
     @Override
     public void register(BeanRegistry registry, Environment env) {
-        registry.registerBean( BeanEleven.class, customizer -> customizer.supplier(
-                ctx -> new BeanEleven("b11_0"){}
+        registry.registerBean(BeanEleven.class, customizer -> customizer.supplier(
+                ctx -> new BeanEleven("b11_0") {
+                }
         ));
-        registry.registerBean( BeanEleven.class, customizer -> customizer.supplier(
-                ctx -> new BeanEleven("b11_1"){}
+        registry.registerBean(BeanEleven.class, customizer -> customizer.supplier(
+                ctx -> new BeanEleven("b11_1") {
+                }
         ));
 
         registry.registerAlias("com.example.springprogrammaticbeansregistration.beanClasses.BeanEleven#0", "alias11_1");

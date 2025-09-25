@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Import;
 
 
 @Configuration
-@Import( AliasRegistrar.class)
+@Import(AliasRegistrar.class)
 public class AliasRegistrarConfiguration {
 
 }

@@ -22,54 +22,61 @@ public class DynamicNameOrTypeBeansRegistrar implements BeanRegistrar {
         registry.registerBean("someBean0", SomeBean0.class);
         // IDEA uses the default bean name instead of the one get from method call
         // Update: now it gets name `java.lang.String#0`
-       registry.registerBean(Utils.getBeanName(env), SomeBean1.class);
-       // bean name is correctly recognized
-       registry.registerBean(Utils.BEAN_NAME_CONSTANT, SomeBean2.class);
+        registry.registerBean(Utils.getBeanName(env), SomeBean1.class);
+        // bean name is correctly recognized
+        registry.registerBean(Utils.BEAN_NAME_CONSTANT, SomeBean2.class);
         // IDEA uses the default bean name instead of the one get from method call
         // update: now it uses the name `T#0`
-       registry.registerBean(Objects.requireNonNull(env.getProperty("utils.bean.name2")), SomeBean3.class);
-       // the name is considered to be `java.lang.String#0`
-       registry.registerBean(env.getProperty("utils.bean.name3"), SomeBean4.class);
-       // bean is displayed as `null#0` in the beans view
+        registry.registerBean(Objects.requireNonNull(env.getProperty("utils.bean.name2")), SomeBean3.class);
+        // the name is considered to be `java.lang.String#0`
+        registry.registerBean(env.getProperty("utils.bean.name3"), SomeBean4.class);
+        // bean is displayed as `null#0` in the beans view
         // also (!!!) is treated as a bean of any type, making all injections display 'multiple candidates' error
         // update: now it is shown as Class<? extends Bar>#0
-       registry.registerBean( Utils.getBeanTypeFirst(env));
+        registry.registerBean(Utils.getBeanTypeFirst(env));
         // bean is treated as a 'boo' bean of any type, again making all injections display 'multiple candidates' error
-        registry.registerBean( "boo",Utils.getBeanTypeSecond(env));
+        registry.registerBean("boo", Utils.getBeanTypeSecond(env));
         // bean name is considered to be `java.lang.Class<ThirdBar>#0`
-        registry.registerBean( Utils.getBeanTypeThird());
+        registry.registerBean(Utils.getBeanTypeThird());
     }
 
 
 }
-class SomeBean0{
+
+class SomeBean0 {
 }
+
 class SomeBean1 {
 }
+
 class SomeBean2 {
 }
+
 class SomeBean3 {
 }
+
 class SomeBean4 {
 }
+
 class Utils {
     static final String BEAN_NAME_CONSTANT = "beanNameFromConstant";
+
     public static String getBeanName(Environment env) {
         return env.getProperty("utils.bean.name1");
     }
+
     public static Class<? extends Bar> getBeanTypeFirst(Environment env) {
         if (Objects.requireNonNull(env.getProperty("utils.bean.type1")).equals("first")) {
             return FirstBar.class;
-        }
-        else {
+        } else {
             return SecondBar.class;
         }
     }
+
     public static Class<? extends Bar> getBeanTypeSecond(Environment env) {
         if (Objects.requireNonNull(env.getProperty("utils.bean.type2")).equals("second")) {
             return SecondBar.class;
-        }
-        else {
+        } else {
             return FirstBar.class;
         }
     }

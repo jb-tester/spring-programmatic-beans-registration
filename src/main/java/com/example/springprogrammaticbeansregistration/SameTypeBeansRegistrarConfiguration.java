@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Import;
 
 
 @Configuration
-@Import( SameTypeBeansRegistrar.class)
+@Import(SameTypeBeansRegistrar.class)
 class SameTypeBeansRegistrarConfiguration {
 
 }

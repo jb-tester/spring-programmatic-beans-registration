@@ -3,7 +3,6 @@ package com.example.springprogrammaticbeansregistration;
 import com.example.springprogrammaticbeansregistration.beanClasses.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,6 +27,6 @@ public class SimpleBeansRegistrationTests {
     void testAutowiring() {
         assertEquals("bean one", beanOne.id());
         assertEquals(zero.getOne().id(), beanOne.id());
-        assertEquals(beanTwo.getBeanOne().id(), beanOne.id());
+        assertEquals(beanTwo.beanOne().id(), beanOne.id());
     }
 }
