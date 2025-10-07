@@ -27,7 +27,7 @@ public class PrimaryFallbackNotautowirableBeansRegistrar implements BeanRegistra
         registry.registerBean("tb31",TestBean3.class,
                 spec -> {
                     spec.supplier(ctx -> new TestBean3("tb31"));
-                    spec.fallback();});
+                    spec.notAutowirable();});
         registry.registerBean("tb32", TestBean3.class,
                 spec -> spec.supplier(ctx -> new TestBean3("tb32")));
     }
