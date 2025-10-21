@@ -9,7 +9,8 @@ import org.springframework.core.env.Environment;
 
 // just some registrar that is registered programmatically in another registrar
 // (RegistrarOfRegistrars)
-// this configuration is not recognized by IDEA, thus the beans `bean9` and `bean10` are not shown as beans anywhere
+// ~~this configuration is not recognized by IDEA, thus the beans `bean9` and `bean10` are not shown as beans anywhere~~
+// Update: FIXED
 public class MyBeansRegistrar implements BeanRegistrar {
 
     @Override

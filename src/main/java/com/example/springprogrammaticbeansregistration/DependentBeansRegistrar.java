@@ -27,9 +27,9 @@ public class DependentBeansRegistrar implements BeanRegistrar {
         registry.registerBean("eight2", BeanEight.class);
         // primary bean:
         registry.registerBean("eight3", BeanEight.class,
-                customizer -> customizer.primary()
+                BeanRegistry.Spec::primary
         );
-        registry.registerBean("five", BeanFive.class,
+        registry.registerBean("five1", BeanFive.class,
                 customizer -> {
                     customizer.supplier(
                             context -> new BeanFive(

@@ -10,6 +10,11 @@ import org.springframework.core.env.Environment;
 
 
 public class SameTypeBeansRegistrar implements BeanRegistrar {
+
+    // incorrect implict names are detected:
+    // the implementation type is used for the name composing instead of`
+    // the declared type (interface type), like
+    // `FirstBuzz#0` and `SecondBuzz#0` instead of `Buzz#0` and `Buzz#1`
     @Override
     public void register(BeanRegistry registry, Environment env) {
         registry.registerBean(

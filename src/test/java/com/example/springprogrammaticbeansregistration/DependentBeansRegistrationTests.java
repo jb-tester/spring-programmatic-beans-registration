@@ -13,9 +13,10 @@ public class DependentBeansRegistrationTests {
 
 
     @Autowired private BeanFour beanFour;
+    @Qualifier("five1")
     @Autowired private BeanFive beanFive;
 
-    // one of the beans is defined as primary, should be no errors
+    // one of the beans is defined as primary, should be no errors - fixed
     @Autowired private BeanEight beanEight;
     // qualified autowiring is ok:
     @Autowired private BeanEight eight2;

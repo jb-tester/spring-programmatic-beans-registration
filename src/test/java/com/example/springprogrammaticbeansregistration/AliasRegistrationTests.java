@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 public class AliasRegistrationTests {
 
-    // aliases are not resolved
+    // aliases are not resolved - fixed; alias completion - fixed.
+    // alias rename doesn't work, but this is minor
     @Qualifier("alias11_1")
     @Autowired
     private BeanEleven beanEleven1;

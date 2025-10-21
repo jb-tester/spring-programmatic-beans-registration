@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 public class PrimaryFallbackNotautowirableBeansRegistrationTest {
 
-    // multiple candidates instead of 1 primary:
+    // multiple candidates instead of 1 primary - FIXED
     @Autowired
     TestBean1 testBean1;
     // multiple candidates instead of 1 non-fallback:

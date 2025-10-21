@@ -6,6 +6,7 @@ import com.example.springprogrammaticbeansregistration.beanClasses.SecondBar;
 import com.example.springprogrammaticbeansregistration.beanClasses.ThirdBar;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
@@ -25,6 +26,7 @@ public class DynamicBeansRegistrationTests {
     @Autowired private ThirdBar bar3;
     // ====
     // dynamic name/type test: dynamic name
+    @Qualifier("beanNameFromProperties11")
     @Autowired SomeBean1 someBean1;  // name from some util method call
     @Autowired SomeBean2 someBean2;  // name from constant
     @Autowired SomeBean3 someBean3;  // Objects.requireNonNull(env.getProperty())
@@ -44,6 +46,7 @@ public class DynamicBeansRegistrationTests {
         assertNotNull(someBean1);
         assertNotNull(someBean2);
         assertNotNull(someBean3);
+        assertNotNull(someBean4);
     }
 
     @Test
@@ -52,9 +55,10 @@ public class DynamicBeansRegistrationTests {
         assertEquals("boo", context.getBeanNamesForType(SecondBar.class)[0]);
         assertEquals("com.example.springprogrammaticbeansregistration.beanClasses.ThirdBar#0", context.getBeanNamesForType(ThirdBar.class)[0]);
         assertEquals("someBean0", context.getBeanNamesForType(SomeBean0.class)[0]);
-        assertEquals("beanNameFromProperties1", context.getBeanNamesForType(SomeBean1.class)[0]);
+        assertEquals("beanNameFromProperties11", context.getBeanNamesForType(SomeBean1.class)[0]);
         assertEquals("beanNameFromConstant", context.getBeanNamesForType(SomeBean2.class)[0]);
         assertEquals("beanNameFromProperties2", context.getBeanNamesForType(SomeBean3.class)[0]);
         assertEquals("beanNameFromProperties3", context.getBeanNamesForType(SomeBean4.class)[0]);
+
     }
 }

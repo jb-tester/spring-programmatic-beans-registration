@@ -18,21 +18,29 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 public class SameTypeBeansRegistrationTests {
 
+     // Referencing by declaration type (interface) with name qualifier:
+    // implicit names:
+    // ~~doesn't navigate to the proper bean definition - navigates to the first implicit-name bean instead~~
+    // Update: not resolved qualifiers, no navigation at all:
+    // we incorrectly consider the names to be
+    // `com.example.springprogrammaticbeansregistration.beanClasses.FirstBuzz#0`
+    // and `com.example.springprogrammaticbeansregistration.beanClasses.SecondBuzz#0`
 
     @Qualifier("com.example.springprogrammaticbeansregistration.beanClasses.Buzz#0")
     @Autowired
     private Buzz buzz1_qualified;
 
-    // doesn't navigate to the proper bean definition - navigates to the first implicit-name bean instead
     @Qualifier("com.example.springprogrammaticbeansregistration.beanClasses.Buzz#1")
     @Autowired
     private Buzz buzz2_qualified;
 
-     @Qualifier("thirdBuzz")
+    // explicit name:
+    @Qualifier("thirdBuzz")
     @Autowired
     private Buzz buzz3_qualified;
 
-    // the beans are not found by their specific type (false-positive errors):
+     // referencing by the implementation type:
+    // ~~the beans are not found by their specific type (false-positive errors)~~ - FIXED
     @Autowired
     private FirstBuzz buzz1;
     @Autowired
